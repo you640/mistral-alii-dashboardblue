@@ -33,6 +33,10 @@ const links = [[{
   icon: 'i-lucide-clock',
   to: '/timeline'
 }], [{
+  label: 'Pripojiť AI (MCP)',
+  icon: 'i-lucide-cable',
+  to: '/connect'
+}, {
   label: 'Nastavenia',
   icon: 'i-lucide-settings',
   to: '/settings'
