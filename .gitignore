@@ -45,5 +45,6 @@ coverage/
 base44/.app.jsonc
 *.zip
 docs/servicetoken.md
+base44/apibase44.md
 
 .vercel

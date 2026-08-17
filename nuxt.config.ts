@@ -35,6 +35,9 @@ export default defineNuxtConfig({
   runtimeConfig: {
     mistralApiKey: process.env.MISTRAL_API_KEY || process.env.NUXT_MISTRAL_API_KEY || '',
     prismaServiceToken: process.env.PRISMA_SERVICE_TOKEN || process.env.NUXT_PRISMA_SERVICE_TOKEN || '',
+    base44AgentId: process.env.BASE44_AGENT_ID || '6a82afdc22217ec663d7c4f2',
+    base44AgentApiKey: process.env.BASE44_AGENT_API_KEY || '',
+    base44ConversationId: process.env.BASE44_CONVERSATION_ID || '6a82afdef0ddf529b3da692d',
     public: {
       base44AppId: process.env.BASE44_APP_ID || '6a81f5e7f4adbf6a9523b9d8'
     }
