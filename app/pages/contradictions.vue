@@ -7,6 +7,13 @@ const toast = useToast()
 
 const selectedSeverity = ref<string>('all')
 const selectedStatus = ref<string>('all')
+const shareCardOpen = ref(false)
+const selectedContradictionForShare = ref<any>(null)
+
+function openShareCard(contra: any) {
+  selectedContradictionForShare.value = contra
+  shareCardOpen.value = true
+}
 
 const filteredContradictions = computed(() => {
   return store.contradictions.filter((c) => {
@@ -133,8 +140,16 @@ function getSeverityColor(sev: Severity | string) {
             </p>
 
             <!-- Akcie pre vyšetrovateľa (Human-in-the-loop) -->
-            <div class="flex items-center justify-end gap-2 pt-2 border-t border-default/50">
+            <div class="flex flex-wrap items-center justify-end gap-2 pt-2 border-t border-default/50">
               <span class="text-xs text-muted mr-auto">Posúdenie vyšetrovateľa:</span>
+              <UButton
+                icon="i-lucide-share-2"
+                label="Alibi Impossible Karta"
+                color="primary"
+                variant="subtle"
+                size="xs"
+                @click="openShareCard(contra)"
+              />
               <UButton
                 icon="i-lucide-check"
                 label="Potvrdiť rozpor"
@@ -157,6 +172,12 @@ function getSeverityColor(sev: Severity | string) {
           </div>
         </div>
       </div>
+
+      <!-- Alibi Impossible Virálna Karta -->
+      <AlibiShareCard
+        v-model:open="shareCardOpen"
+        :contradiction="selectedContradictionForShare"
+      />
     </template>
   </UDashboardPanel>
 </template>
