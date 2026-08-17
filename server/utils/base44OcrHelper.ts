@@ -35,7 +35,13 @@ export class Base44OCREntityHelper {
    * Spracuje dokument cez OCR a namapuje ho na CaseDocument entitu pre Base44
    */
   async processCaseDocument(input: CaseDocumentInput): Promise<CaseDocumentEntity> {
-    const buffer = input.fileBuffer || (input.filePath ? await import('fs').then(fs => fs.promises.readFile(input.filePath!)) : Buffer.from(''))
+    let buffer: Buffer = Buffer.from('')
+    if (input.fileBuffer) {
+      buffer = input.fileBuffer
+    } else if (input.filePath) {
+      const fs = await import('fs')
+      buffer = await fs.promises.readFile(input.filePath)
+    }
 
     const ocrResult = await this.ocrService.extractText(buffer, input.mimeType)
 
