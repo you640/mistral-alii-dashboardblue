@@ -17,18 +17,12 @@ onMounted(() => {
   }
 })
 
-function handleSaveBase44() {
+function handleSaveSettings() {
   if (typeof window !== 'undefined') {
     localStorage.setItem('base44_app_id', appId.value)
     localStorage.setItem('base44_api_key', apiKey.value)
-    toast.add({ title: 'Base44 konfigurácia uložená', color: 'success' })
-  }
-}
-
-function handleSaveMistral() {
-  if (typeof window !== 'undefined') {
     localStorage.setItem('mistral_api_key', mistralApiKey.value)
-    toast.add({ title: 'Mistral API kľúč uložený', color: 'success' })
+    toast.add({ title: 'Nastavenia uložené', color: 'success' })
   }
 }
 

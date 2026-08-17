@@ -6,7 +6,15 @@ import { useBatchUploader } from '~/composables/useBatchUploader'
 const store = useForenzStore()
 const toast = useToast()
 const { status: aiStatus, analyzeDocument } = useAiAnalyzer()
-const batch = useBatchUploader()
+const {
+  queue: batchQueue,
+  isProcessing: isBatchProcessing,
+  overallProgress: batchOverallProgress,
+  addFilesToQueue,
+  removeItem: removeBatchItem,
+  clearQueue: clearBatchQueue,
+  startBatchAnalysis
+} = useBatchUploader()
 
 const activeTab = ref<'batch' | 'single'>('batch')
 const docTitle = ref('')
@@ -24,7 +32,7 @@ const filteredDocuments = computed(() => {
 function handleBatchFileSelect(event: Event) {
   const target = event.target as HTMLInputElement
   if (target.files && target.files.length > 0) {
-    batch.addFilesToQueue(target.files)
+    addFilesToQueue(target.files)
     target.value = ''
   }
 }
@@ -32,7 +40,7 @@ function handleBatchFileSelect(event: Event) {
 function handleDrop(event: DragEvent) {
   isDragging.value = false
   if (event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files.length > 0) {
-    batch.addFilesToQueue(event.dataTransfer.files)
+    addFilesToQueue(event.dataTransfer.files)
   }
 }
 
@@ -221,12 +229,12 @@ function removeDoc(id: string) {
             </div>
 
             <!-- Fronta hromadného importu (Queue Table) -->
-            <div v-if="batch.queue.length > 0" class="p-4 rounded-xl border border-default bg-default space-y-3">
+            <div v-if="batchQueue.length > 0" class="p-4 rounded-xl border border-default bg-default space-y-3">
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
                   <h4 class="font-bold text-sm flex items-center gap-2">
                     <UIcon name="i-lucide-list-ordered" class="size-4 text-primary" />
-                    Fronta súborov na analýzu ({{ batch.queue.length }})
+                    Fronta súborov na analýzu ({{ batchQueue.length }})
                   </h4>
                   <p class="text-xs text-muted">
                     Pripravené na sekvenčnú forenznú extrakciu a krížovú kontrolu.
@@ -239,30 +247,30 @@ function removeDoc(id: string) {
                     color="neutral"
                     variant="ghost"
                     size="xs"
-                    :disabled="batch.isProcessing"
-                    @click="batch.clearQueue"
+                    :disabled="isBatchProcessing"
+                    @click="clearBatchQueue"
                   />
                   <UButton
                     icon="i-lucide-sparkles"
-                    :label="batch.isProcessing ? 'Analyzuje sa...' : `Spustiť Hromadnú Analýzu (${batch.queue.length})`"
+                    :label="isBatchProcessing ? 'Analyzuje sa...' : `Spustiť Hromadnú Analýzu (${batchQueue.length})`"
                     color="primary"
                     size="sm"
-                    :loading="batch.isProcessing"
-                    @click="batch.startBatchAnalysis"
+                    :loading="isBatchProcessing"
+                    @click="startBatchAnalysis"
                   />
                 </div>
               </div>
 
               <!-- Celkový progress bar -->
-              <div v-if="batch.isProcessing" class="space-y-1">
+              <div v-if="isBatchProcessing" class="space-y-1">
                 <div class="flex justify-between text-xs font-semibold text-primary">
                   <span>Celkový postup hromadného importu</span>
-                  <span>{{ batch.overallProgress }}%</span>
+                  <span>{{ batchOverallProgress }}%</span>
                 </div>
                 <div class="w-full bg-default/60 rounded-full h-2 overflow-hidden">
                   <div
                     class="bg-primary h-full transition-all duration-300 rounded-full"
-                    :style="{ width: batch.overallProgress + '%' }"
+                    :style="{ width: batchOverallProgress + '%' }"
                   />
                 </div>
               </div>
@@ -270,7 +278,7 @@ function removeDoc(id: string) {
               <!-- Zoznam položiek vo fronte -->
               <div class="divide-y divide-default/50 max-h-72 overflow-y-auto pr-1">
                 <div
-                  v-for="(item, idx) in batch.queue"
+                  v-for="(item, idx) in batchQueue"
                   :key="item.id"
                   class="py-2.5 flex items-center justify-between gap-3 text-xs"
                 >
@@ -306,8 +314,8 @@ function removeDoc(id: string) {
                       color="neutral"
                       variant="ghost"
                       size="xs"
-                      :disabled="batch.isProcessing"
-                      @click="batch.removeItem(item.id)"
+                      :disabled="isBatchProcessing"
+                      @click="removeBatchItem(item.id)"
                     />
                   </div>
                 </div>

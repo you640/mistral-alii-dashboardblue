@@ -93,7 +93,7 @@ function getNodePos(id: string) {
                   font-size="10"
                   class="font-medium"
                 >
-                  {{ edge.label || edge.type }}
+                  {{ edge.label || 'kontakt' }}
                 </text>
               </g>
 

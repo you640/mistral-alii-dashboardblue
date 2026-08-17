@@ -70,5 +70,11 @@ export default defineNuxtConfig({
       'defineStore',
       ['defineStore', 'definePiniaStore']
     ]
+  },
+
+  icon: {
+    serverBundle: {
+      collections: ['lucide', 'simple-icons']
+    }
   }
 })
