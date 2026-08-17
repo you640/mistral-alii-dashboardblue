@@ -2,6 +2,8 @@
 import type { NavigationMenuItem } from '@nuxt/ui'
 
 const route = useRoute()
+const { isUnlocked } = useVault()
+const vaultModalOpen = ref(false)
 
 useDashboard()
 
@@ -89,10 +91,26 @@ const groups = computed(() => [{
           tooltip
           class="mt-auto"
         />
+
+        <!-- Zero-Knowledge Trezor Tlačidlo -->
+        <div class="p-2 pt-0">
+          <UButton
+            :icon="isUnlocked ? 'i-lucide-lock-open' : 'i-lucide-shield'"
+            :label="collapsed ? undefined : (isUnlocked ? 'Trezor odomknutý' : 'Odomknúť trezor')"
+            :color="isUnlocked ? 'success' : 'warning'"
+            variant="subtle"
+            size="xs"
+            class="w-full justify-start"
+            @click="vaultModalOpen = true"
+          />
+        </div>
       </template>
     </UDashboardSidebar>
 
     <UDashboardSearch :groups="groups" />
+
+    <!-- Zero-Knowledge Trezor Modal -->
+    <VaultUnlockModal v-model:open="vaultModalOpen" />
 
     <slot />
   </UDashboardGroup>
