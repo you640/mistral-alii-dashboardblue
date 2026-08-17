@@ -66,10 +66,7 @@ export default defineNuxtConfig({
   },
 
   pinia: {
-    autoImports: [
-      'defineStore',
-      ['defineStore', 'definePiniaStore']
-    ]
+    storesDirs: ['./app/stores/**']
   },
 
   icon: {
