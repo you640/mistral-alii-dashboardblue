@@ -51,8 +51,7 @@ function cleanJsonOutput(text: string): string {
   let cleaned = text.trim()
   if (cleaned.startsWith('```json')) {
     cleaned = cleaned.slice(7)
-  }
-  else if (cleaned.startsWith('```')) {
+  } else if (cleaned.startsWith('```')) {
     cleaned = cleaned.slice(3)
   }
   if (cleaned.endsWith('```')) {
@@ -120,8 +119,7 @@ export default defineEventHandler(async (event) => {
         model,
         data: parsed
       }
-    }
-    catch (err: any) {
+    } catch (err: any) {
       console.warn('AI analysis fallback due to error:', err.message)
       // Pokračuj na inteligentný heuristický fallback ak API zlyhá
     }
@@ -132,16 +130,16 @@ export default defineEventHandler(async (event) => {
   const lines = rawText.split('\n').map(l => l.trim()).filter(Boolean)
 
   // Detekcia mien a rolí s explicitnými typmi
-  const nodes: Array<{ id: string; label: string; type: string; details: string }> = []
-  const claims: Array<{ subject: string; predicate: string; object: string; event_date: string; event_time: string; approximate_time: boolean; location: string; source_quote: string; confidence: number }> = []
-  const events: Array<{ title: string; type: string; persons: string[]; time: string; date: string; description: string; source_quote: string; confidence: number }> = []
+  const nodes: Array<{ id: string, label: string, type: string, details: string }> = []
+  const claims: Array<{ subject: string, predicate: string, object: string, event_date: string, event_time: string, approximate_time: boolean, location: string, source_quote: string, confidence: number }> = []
+  const events: Array<{ title: string, type: string, persons: string[], time: string, date: string, description: string, source_quote: string, confidence: number }> = []
   const red_flags: string[] = []
-  const locations: Array<{ name: string; address?: string; source_quote: string; confidence: number }> = []
-  const vehicles: Array<{ type: string; brand_model: string; color: string; source_quote: string; confidence: number }> = []
+  const locations: Array<{ name: string, address?: string, source_quote: string, confidence: number }> = []
+  const vehicles: Array<{ type: string, brand_model: string, color: string, source_quote: string, confidence: number }> = []
 
   // Extrakcia času HH:MM
   const timeMatches = rawText.matchAll(/(\b[0-2]?[0-9][:.][0-5][0-9]\b)/g)
-  const foundTimes = Array.from(timeMatches).map(m => {
+  const foundTimes = Array.from(timeMatches).map((m) => {
     const matched = m[1] ?? ''
     return matched.replace('.', ':').padStart(5, '0')
   })

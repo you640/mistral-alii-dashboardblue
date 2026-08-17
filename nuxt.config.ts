@@ -11,8 +11,6 @@ export default defineNuxtConfig({
     enabled: true
   },
 
-  css: ['~/assets/css/main.css'],
-
   app: {
     head: {
       title: 'Alibi — AI Forenzná Platforma',
@@ -31,15 +29,13 @@ export default defineNuxtConfig({
     }
   },
 
+  css: ['~/assets/css/main.css'],
+
   runtimeConfig: {
     mistralApiKey: process.env.MISTRAL_API_KEY || process.env.NUXT_MISTRAL_API_KEY || '',
     public: {
       base44AppId: process.env.BASE44_APP_ID || '6a81f5e7f4adbf6a9523b9d8'
     }
-  },
-
-  nitro: {
-    preset: 'vercel'
   },
 
   routeRules: {
@@ -56,6 +52,10 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2026-06-30',
 
+  nitro: {
+    preset: 'vercel'
+  },
+
   eslint: {
     config: {
       stylistic: {
@@ -65,13 +65,13 @@ export default defineNuxtConfig({
     }
   },
 
-  pinia: {
-    storesDirs: ['./app/stores/**']
-  },
-
   icon: {
     serverBundle: {
       collections: ['lucide', 'simple-icons']
     }
-  }
+  },
+
+  pinia: {
+    storesDirs: ['./app/stores/**']
+  },
 })

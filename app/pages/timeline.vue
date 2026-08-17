@@ -26,7 +26,9 @@ const events = computed(() => store.timelineEvents)
         <!-- Prázdny stav -->
         <div v-if="events.length === 0" class="text-center py-20 border border-dashed border-default rounded-xl">
           <UIcon name="i-lucide-clock" class="size-12 text-muted mx-auto mb-2 opacity-50" />
-          <h3 class="font-semibold text-base mb-1">Žiadne udalosti na časovej osi</h3>
+          <h3 class="font-semibold text-base mb-1">
+            Žiadne udalosti na časovej osi
+          </h3>
           <p class="text-sm text-muted max-w-sm mx-auto mb-4">
             AI automaticky extrahuje časové údaje a udalosti z nahraných výpovedí.
           </p>
@@ -52,9 +54,13 @@ const events = computed(() => store.timelineEvents)
                   <span class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-primary/10 text-primary">
                     {{ evt.date ? evt.date + ' · ' : '' }}{{ evt.time || 'Neznámy čas' }}
                   </span>
-                  <h4 class="font-bold text-sm text-foreground">{{ evt.title }}</h4>
+                  <h4 class="font-bold text-sm text-foreground">
+                    {{ evt.title }}
+                  </h4>
                 </div>
-                <UBadge variant="subtle" size="xs">{{ evt.type || 'udalosť' }}</UBadge>
+                <UBadge variant="subtle" size="xs">
+                  {{ evt.type || 'udalosť' }}
+                </UBadge>
               </div>
 
               <p class="text-xs text-foreground/90">

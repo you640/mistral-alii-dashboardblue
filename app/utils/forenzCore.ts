@@ -57,8 +57,8 @@ export function namesMatch(a: string, b: string): boolean {
 }
 
 export const TYPE_COLOR: Record<string, string> = {
-  'podozrivý': '#ef4444',
-  'svedok': '#3b82f6',
-  'obeť': '#f97316',
-  'alibi': '#22c55e'
+  podozrivý: '#ef4444',
+  svedok: '#3b82f6',
+  obeť: '#f97316',
+  alibi: '#22c55e'
 }

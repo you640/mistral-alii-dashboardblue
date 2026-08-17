@@ -76,8 +76,12 @@ function handleResetAll() {
               <UIcon name="i-lucide-sparkles" class="size-5" />
             </div>
             <div>
-              <h3 class="font-semibold text-base">Mistral AI & Pixtral Vision API</h3>
-              <p class="text-xs text-muted">API kľúč pre analýzu výpovedí, OCR fotografií a extrakciu entít.</p>
+              <h3 class="font-semibold text-base">
+                Mistral AI & Pixtral Vision API
+              </h3>
+              <p class="text-xs text-muted">
+                API kľúč pre analýzu výpovedí, OCR fotografií a extrakciu entít.
+              </p>
             </div>
           </div>
 
@@ -104,8 +108,12 @@ function handleResetAll() {
               <UIcon name="i-lucide-database" class="size-5" />
             </div>
             <div>
-              <h3 class="font-semibold text-base">Base44 Backend SDK</h3>
-              <p class="text-xs text-muted">Nastavenie pripojenia pre ukladanie a synchronizáciu entít.</p>
+              <h3 class="font-semibold text-base">
+                Base44 Backend SDK
+              </h3>
+              <p class="text-xs text-muted">
+                Nastavenie pripojenia pre ukladanie a synchronizáciu entít.
+              </p>
             </div>
           </div>
 
@@ -134,8 +142,12 @@ function handleResetAll() {
               <UIcon name="i-lucide-file-archive" class="size-5" />
             </div>
             <div>
-              <h3 class="font-semibold text-base">Export Súdneho Dossier</h3>
-              <p class="text-xs text-muted">Generovanie auditného balíka s reťazcom dôkazov a časovými záznamami.</p>
+              <h3 class="font-semibold text-base">
+                Export Súdneho Dossier
+              </h3>
+              <p class="text-xs text-muted">
+                Generovanie auditného balíka s reťazcom dôkazov a časovými záznamami.
+              </p>
             </div>
           </div>
 
@@ -152,8 +164,12 @@ function handleResetAll() {
 
         <!-- Reset Dát -->
         <div class="p-5 rounded-xl border border-rose-500/20 bg-rose-500/5 space-y-3">
-          <h3 class="font-semibold text-base text-rose-400">Nebezpečná zóna</h3>
-          <p class="text-xs text-muted">Vymazanie všetkých nahraných výpovedí, osôb a detekovaných rozporov z lokálnej pamäte.</p>
+          <h3 class="font-semibold text-base text-rose-400">
+            Nebezpečná zóna
+          </h3>
+          <p class="text-xs text-muted">
+            Vymazanie všetkých nahraných výpovedí, osôb a detekovaných rozporov z lokálnej pamäte.
+          </p>
           <UButton
             icon="i-lucide-trash-2"
             label="Vymazať celú databázu"

@@ -26,8 +26,7 @@ export default defineNuxtPlugin(() => {
           }
         })
       })
-    }
-    catch (error) {
+    } catch (error) {
       console.warn('[PWA] Service Worker registration failed:', error)
     }
   })

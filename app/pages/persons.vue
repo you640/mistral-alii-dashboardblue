@@ -8,7 +8,7 @@ const toast = useToast()
 const searchQuery = ref('')
 const selectedRole = ref<string>('all')
 
-const roles: { label: string; value: string; color: string }[] = [
+const roles: { label: string, value: string, color: string }[] = [
   { label: 'Všetci', value: 'all', color: 'neutral' },
   { label: 'Podozriví', value: 'podozrivý', color: 'error' },
   { label: 'Svedkovia', value: 'svedok', color: 'info' },
@@ -17,10 +17,10 @@ const roles: { label: string; value: string; color: string }[] = [
 ]
 
 const filteredPersons = computed(() => {
-  return store.persons.filter(p => {
-    const matchesSearch = !searchQuery.value ||
-      (p.name && p.name.toLowerCase().includes(searchQuery.value.toLowerCase())) ||
-      (p.details && p.details.toLowerCase().includes(searchQuery.value.toLowerCase()))
+  return store.persons.filter((p) => {
+    const matchesSearch = !searchQuery.value
+      || (p.name && p.name.toLowerCase().includes(searchQuery.value.toLowerCase()))
+      || (p.details && p.details.toLowerCase().includes(searchQuery.value.toLowerCase()))
     const matchesRole = selectedRole.value === 'all' || p.type === selectedRole.value
     return matchesSearch && matchesRole
   })
@@ -79,7 +79,9 @@ function removePerson(id: string) {
         <!-- Prázdny stav -->
         <div v-if="filteredPersons.length === 0" class="text-center py-16 border border-dashed border-default rounded-xl">
           <UIcon name="i-lucide-user-x" class="size-10 text-muted mx-auto mb-2 opacity-50" />
-          <h3 class="font-semibold text-base mb-1">Žiadne osoby</h3>
+          <h3 class="font-semibold text-base mb-1">
+            Žiadne osoby
+          </h3>
           <p class="text-sm text-muted max-w-sm mx-auto mb-4">
             Nahrajte výpovede v sekcii Spisy pre automatickú AI extrakciu profilov osôb.
           </p>
@@ -103,7 +105,9 @@ function removePerson(id: string) {
                     {{ (person.name || 'O').charAt(0) }}
                   </div>
                   <div>
-                    <h4 class="font-semibold text-sm leading-tight">{{ person.name }}</h4>
+                    <h4 class="font-semibold text-sm leading-tight">
+                      {{ person.name }}
+                    </h4>
                     <span class="text-xs text-muted">{{ person.document_title || 'Nezaradený spis' }}</span>
                   </div>
                 </div>

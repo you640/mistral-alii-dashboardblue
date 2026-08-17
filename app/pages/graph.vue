@@ -55,7 +55,9 @@ function getNodePos(id: string) {
         <!-- Prázdny stav -->
         <div v-if="nodes.length === 0" class="text-center py-20 border border-dashed border-default rounded-xl">
           <UIcon name="i-lucide-share-2" class="size-12 text-muted mx-auto mb-2 opacity-50" />
-          <h3 class="font-semibold text-base mb-1">Žiadne prepojenia na zobrazenie</h3>
+          <h3 class="font-semibold text-base mb-1">
+            Žiadne prepojenia na zobrazenie
+          </h3>
           <p class="text-sm text-muted max-w-sm mx-auto mb-4">
             Načítajte spisy s výpoveďami a osobami pre vygenerovanie interaktívneho sociálneho grafu.
           </p>
@@ -156,18 +158,28 @@ function getNodePos(id: string) {
                   {{ (selectedNode.label || 'O').charAt(0) }}
                 </div>
                 <div>
-                  <h4 class="font-bold text-base">{{ selectedNode.label }}</h4>
-                  <UBadge variant="subtle" size="xs">{{ selectedNode.type }}</UBadge>
+                  <h4 class="font-bold text-base">
+                    {{ selectedNode.label }}
+                  </h4>
+                  <UBadge variant="subtle" size="xs">
+                    {{ selectedNode.type }}
+                  </UBadge>
                 </div>
               </div>
 
               <div class="p-3 bg-elevated/40 rounded-lg border border-default/50 space-y-1">
-                <div class="text-xs text-muted font-medium">Profil & Kontext:</div>
-                <p class="text-xs text-foreground/90">{{ selectedNode.details || 'Bez dodatočného popisu.' }}</p>
+                <div class="text-xs text-muted font-medium">
+                  Profil & Kontext:
+                </div>
+                <p class="text-xs text-foreground/90">
+                  {{ selectedNode.details || 'Bez dodatočného popisu.' }}
+                </p>
               </div>
 
               <div class="space-y-2 pt-2 border-t border-default/50">
-                <div class="text-xs font-semibold text-muted">Súvisiace vzťahy:</div>
+                <div class="text-xs font-semibold text-muted">
+                  Súvisiace vzťahy:
+                </div>
                 <div
                   v-for="e in edges.filter(ed => ed.source === selectedNode.id || ed.target === selectedNode.id)"
                   :key="e.source + '-' + e.target"

@@ -44,7 +44,7 @@ export function useBatchUploader() {
 
   function addFilesToQueue(files: FileList | File[]) {
     const fileArray = Array.from(files)
-    const newItems: BatchItem[] = fileArray.map((file) => ({
+    const newItems: BatchItem[] = fileArray.map(file => ({
       id: `batch_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
       file,
       name: file.name,
@@ -113,7 +113,7 @@ export function useBatchUploader() {
 
       try {
         const docTitle = item.name.replace(/\.[^/.]+$/, '')
-        let res: { ok: boolean; docId?: string; data?: any; error?: string }
+        let res: { ok: boolean, docId?: string, data?: any, error?: string }
 
         if (item.type === 'image') {
           item.progress = 40
@@ -123,8 +123,7 @@ export function useBatchUploader() {
             title: docTitle,
             imageDataUrl: dataUrl
           })
-        }
-        else {
+        } else {
           item.progress = 40
           const text = await readFileAsText(item.file)
           item.progress = 60
@@ -143,13 +142,11 @@ export function useBatchUploader() {
             contradictions: res.data?.contradictions?.length || 0
           }
           successfulCount++
-        }
-        else {
+        } else {
           item.status = 'error'
           item.error = res?.error || 'Zlyhanie analýzy'
         }
-      }
-      catch (err: any) {
+      } catch (err: any) {
         item.status = 'error'
         item.error = err.message || 'Chyba spracovania súboru'
       }

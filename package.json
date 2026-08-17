@@ -13,7 +13,6 @@
     "test:all": "npm test && npm run lint && npm run typecheck"
   },
   "dependencies": {
-    "@base44/sdk": "^0.8.41",
     "@iconify-json/lucide": "^1.2.122",
     "@iconify-json/simple-icons": "^1.2.93",
     "@internationalized/date": "^3.12.3",
@@ -39,6 +38,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@base44/sdk": "^0.8.42",
     "@nuxt/eslint": "^1.17.0",
     "@pinia/nuxt": "^0.5.3",
     "@types/lodash": "^4.17.7",

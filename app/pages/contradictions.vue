@@ -9,7 +9,7 @@ const selectedSeverity = ref<string>('all')
 const selectedStatus = ref<string>('all')
 
 const filteredContradictions = computed(() => {
-  return store.contradictions.filter(c => {
+  return store.contradictions.filter((c) => {
     const matchesSev = selectedSeverity.value === 'all' || c.severity === selectedSeverity.value
     const matchesStat = selectedStatus.value === 'all' || c.status === selectedStatus.value
     return matchesSev && matchesStat
@@ -90,7 +90,9 @@ function getSeverityColor(sev: Severity | string) {
         <!-- Prázdny stav -->
         <div v-if="filteredContradictions.length === 0" class="text-center py-16 border border-dashed border-default rounded-xl">
           <UIcon name="i-lucide-check-circle-2" class="size-12 text-emerald-500 mx-auto mb-2 opacity-60" />
-          <h3 class="font-semibold text-base mb-1">Žiadne nájdené rozpory</h3>
+          <h3 class="font-semibold text-base mb-1">
+            Žiadne nájdené rozpory
+          </h3>
           <p class="text-sm text-muted max-w-sm mx-auto mb-4">
             V aktuálnom výbere sa nenachádzajú žiadne nezrovnalosti medzi výpoveďami.
           </p>

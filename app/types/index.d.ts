@@ -6,13 +6,13 @@ export type PersonType = 'podozrivý' | 'svedok' | 'obeť' | 'alibi'
 
 export type DocumentStatus = 'pending' | 'analyzing' | 'done' | 'error'
 
-export type ContradictionType =
-  | 'time_conflict'
-  | 'location_conflict'
-  | 'location_time_conflict'
-  | 'factual_conflict'
-  | 'identity_conflict'
-  | 'event_participation_conflict'
+export type ContradictionType
+  = | 'time_conflict'
+    | 'location_conflict'
+    | 'location_time_conflict'
+    | 'factual_conflict'
+    | 'identity_conflict'
+    | 'event_participation_conflict'
 
 export type Severity = 'high' | 'medium' | 'low'
 

@@ -73,9 +73,9 @@ export const useForenzStore = defineStore('forenz', {
       return grouped
     },
 
-    pendingDocuments: (state) => state.documents.filter(d => d.status === 'pending'),
-    analyzedDocuments: (state) => state.documents.filter(d => d.status === 'done'),
-    errorDocuments: (state) => state.documents.filter(d => d.status === 'error'),
+    pendingDocuments: state => state.documents.filter(d => d.status === 'pending'),
+    analyzedDocuments: state => state.documents.filter(d => d.status === 'done'),
+    errorDocuments: state => state.documents.filter(d => d.status === 'error'),
 
     selectedDocument: (state) => {
       if (!state.selectedDocumentId) return null
@@ -94,9 +94,9 @@ export const useForenzStore = defineStore('forenz', {
       return grouped
     },
 
-    suspects: (state) => state.persons.filter(p => p.type === 'podozrivý'),
-    witnesses: (state) => state.persons.filter(p => p.type === 'svedok'),
-    victims: (state) => state.persons.filter(p => p.type === 'obeť'),
+    suspects: state => state.persons.filter(p => p.type === 'podozrivý'),
+    witnesses: state => state.persons.filter(p => p.type === 'svedok'),
+    victims: state => state.persons.filter(p => p.type === 'obeť'),
 
     uniquePersons: (state) => {
       const seen = new Map<string, Person>()
@@ -110,12 +110,12 @@ export const useForenzStore = defineStore('forenz', {
     },
 
     // --- Rozpory ---
-    totalContradictions: (state) => state.contradictions.length,
-    confirmedContradictions: (state) => state.contradictions.filter(c => c.status === 'confirmed'),
-    dismissedContradictions: (state) => state.contradictions.filter(c => c.status === 'dismissed'),
-    possibleContradictions: (state) => state.contradictions.filter(c => c.status === 'possible'),
+    totalContradictions: state => state.contradictions.length,
+    confirmedContradictions: state => state.contradictions.filter(c => c.status === 'confirmed'),
+    dismissedContradictions: state => state.contradictions.filter(c => c.status === 'dismissed'),
+    possibleContradictions: state => state.contradictions.filter(c => c.status === 'possible'),
 
-    highSeverityContradictions: (state) => state.contradictions.filter(c => c.severity === 'high'),
+    highSeverityContradictions: state => state.contradictions.filter(c => c.severity === 'high'),
 
     contradictionsByType: (state) => {
       const grouped: Record<string, Contradiction[]> = {}
@@ -128,7 +128,7 @@ export const useForenzStore = defineStore('forenz', {
     },
 
     // --- Štatistiky ---
-    analysisStats: (state) => ({
+    analysisStats: state => ({
       totalDocuments: state.documents.length,
       analyzedDocuments: state.documents.filter(d => d.status === 'done').length,
       totalPersons: state.persons.length,
@@ -448,8 +448,7 @@ export const useForenzStore = defineStore('forenz', {
       try {
         const data = this.exportState()
         localStorage.setItem('forenz_store_backup', JSON.stringify(data))
-      }
-      catch (e) {
+      } catch (e) {
         console.warn('ForenzStore: Nepodarilo sa uložiť do localStorage', e)
       }
     },
@@ -462,8 +461,7 @@ export const useForenzStore = defineStore('forenz', {
         const data = JSON.parse(raw)
         this.importState(data)
         return true
-      }
-      catch (e) {
+      } catch (e) {
         console.warn('ForenzStore: Nepodarilo sa načítať z localStorage', e)
         return false
       }

@@ -59,8 +59,7 @@ function handleSingleFileChange(event: Event) {
         singleFileDataUrl.value = reader.result as string
       }
       reader.readAsDataURL(file)
-    }
-    else {
+    } else {
       const reader = new FileReader()
       reader.onload = () => {
         docText.value = reader.result as string
@@ -136,32 +135,48 @@ function removeDoc(id: string) {
             :class="{ 'ring-2 ring-primary': selectedFilter === 'all' }"
             @click="selectedFilter = 'all'"
           >
-            <div class="text-xs text-muted font-medium">VŠETKY SPISY</div>
-            <div class="text-2xl font-bold mt-1">{{ store.documents.length }}</div>
+            <div class="text-xs text-muted font-medium">
+              VŠETKY SPISY
+            </div>
+            <div class="text-2xl font-bold mt-1">
+              {{ store.documents.length }}
+            </div>
           </div>
           <div
             class="p-4 rounded-lg border border-default bg-default cursor-pointer transition"
             :class="{ 'ring-2 ring-primary': selectedFilter === 'done' }"
             @click="selectedFilter = 'done'"
           >
-            <div class="text-xs text-muted font-medium">SPRACOVANÉ</div>
-            <div class="text-2xl font-bold mt-1 text-emerald-500">{{ store.documentsByStatus.done?.length || 0 }}</div>
+            <div class="text-xs text-muted font-medium">
+              SPRACOVANÉ
+            </div>
+            <div class="text-2xl font-bold mt-1 text-emerald-500">
+              {{ store.documentsByStatus.done?.length || 0 }}
+            </div>
           </div>
           <div
             class="p-4 rounded-lg border border-default bg-default cursor-pointer transition"
             :class="{ 'ring-2 ring-primary': selectedFilter === 'pending' }"
             @click="selectedFilter = 'pending'"
           >
-            <div class="text-xs text-muted font-medium">ČAKAJÚCE</div>
-            <div class="text-2xl font-bold mt-1 text-amber-500">{{ store.documentsByStatus.pending?.length || 0 }}</div>
+            <div class="text-xs text-muted font-medium">
+              ČAKAJÚCE
+            </div>
+            <div class="text-2xl font-bold mt-1 text-amber-500">
+              {{ store.documentsByStatus.pending?.length || 0 }}
+            </div>
           </div>
           <div
             class="p-4 rounded-lg border border-default bg-default cursor-pointer transition"
             :class="{ 'ring-2 ring-primary': selectedFilter === 'error' }"
             @click="selectedFilter = 'error'"
           >
-            <div class="text-xs text-muted font-medium">CHYBNÉ</div>
-            <div class="text-2xl font-bold mt-1 text-rose-500">{{ store.documentsByStatus.error?.length || 0 }}</div>
+            <div class="text-xs text-muted font-medium">
+              CHYBNÉ
+            </div>
+            <div class="text-2xl font-bold mt-1 text-rose-500">
+              {{ store.documentsByStatus.error?.length || 0 }}
+            </div>
           </div>
         </div>
 
@@ -377,7 +392,9 @@ function removeDoc(id: string) {
 
           <div v-if="filteredDocuments.length === 0" class="text-center py-12 border border-dashed border-default rounded-xl">
             <UIcon name="i-lucide-files" class="size-10 text-muted mx-auto mb-2 opacity-50" />
-            <p class="text-sm text-muted">Zatiaľ nie sú nahrané žiadne spisy. Použite hromadný import vyššie.</p>
+            <p class="text-sm text-muted">
+              Zatiaľ nie sú nahrané žiadne spisy. Použite hromadný import vyššie.
+            </p>
           </div>
 
           <div
@@ -397,7 +414,9 @@ function removeDoc(id: string) {
                   {{ doc.status }}
                 </UBadge>
               </div>
-              <p class="text-xs text-muted line-clamp-2 max-w-2xl">{{ doc.summary || 'Bez zhrnutia' }}</p>
+              <p class="text-xs text-muted line-clamp-2 max-w-2xl">
+                {{ doc.summary || 'Bez zhrnutia' }}
+              </p>
               <div class="flex items-center gap-4 text-xs text-muted pt-1">
                 <span>Osoby: {{ doc.person_count || 0 }}</span>
                 <span>Vzťahy: {{ doc.relationship_count || 0 }}</span>

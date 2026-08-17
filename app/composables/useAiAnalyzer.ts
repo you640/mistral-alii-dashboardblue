@@ -91,7 +91,7 @@ export function useAiAnalyzer() {
       }
 
       // Volanie backend endpointu
-      const res = await $fetch<{ ok: boolean; source: string; model?: string; data: any }>('/api/forenz/analyze', {
+      const res = await $fetch<{ ok: boolean, source: string, model?: string, data: any }>('/api/forenz/analyze', {
         method: 'POST',
         body: {
           title,
@@ -153,8 +153,7 @@ export function useAiAnalyzer() {
       })
 
       return { ok: true, docId, data: res.data }
-    }
-    catch (err: any) {
+    } catch (err: any) {
       status.value = {
         isAnalyzing: false,
         step: 'Chyba analýzy',
