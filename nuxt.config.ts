@@ -39,9 +39,11 @@ export default defineNuxtConfig({
     base44AgentApiKey: process.env.BASE44_AGENT_API_KEY || '',
     base44ConversationId: process.env.BASE44_CONVERSATION_ID || '6a82afdef0ddf529b3da692d',
     googleClientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
+    alibiMcpUrl: process.env.ALIBI_MCP_URL || 'https://alibi-case-core.base44.app/api/mcp',
     public: {
       base44AppId: process.env.BASE44_APP_ID || '6a81f5e7f4adbf6a9523b9d8',
-      googleClientId: process.env.GOOGLE_CLIENT_ID || '428271996187-itn54u3f6onghvkj7oelvlntvgiebd8i.apps.googleusercontent.com'
+      googleClientId: process.env.GOOGLE_CLIENT_ID || '428271996187-itn54u3f6onghvkj7oelvlntvgiebd8i.apps.googleusercontent.com',
+      mcpUrl: process.env.ALIBI_MCP_URL || 'https://alibi-case-core.base44.app/api/mcp'
     }
   },
 
