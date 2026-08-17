@@ -44,3 +44,5 @@ coverage/
 # Base44 secrets & temp
 base44/.app.jsonc
 *.zip
+
+.vercel
