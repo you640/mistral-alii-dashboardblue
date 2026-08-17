@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useVault } from '~/composables/useVault'
+
 const props = defineProps<{
   open: boolean
 }>()

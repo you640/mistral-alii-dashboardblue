@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
+import { useVault } from '~/composables/useVault'
 
 const route = useRoute()
 const { isUnlocked } = useVault()
