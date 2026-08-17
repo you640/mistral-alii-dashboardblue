@@ -73,13 +73,13 @@ onUnmounted(() => {
   >
     <div
       v-if="!isUnlocked"
-      class="fixed inset-0 z-[99999] flex items-center justify-center bg-slate-950/98 backdrop-blur-3xl select-none p-4"
+      class="fixed inset-0 z-99999 flex items-center justify-center bg-slate-950/98 backdrop-blur-3xl select-none p-4"
       style="height: 100dvh;"
     >
       <div class="max-w-xs w-full text-center space-y-6">
         <!-- Logo a štít -->
         <div class="space-y-3">
-          <div class="relative mx-auto size-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-rose-500 p-0.5 shadow-2xl shadow-amber-500/20">
+          <div class="relative mx-auto size-16 rounded-2xl bg-linear-to-tr from-amber-500 to-rose-500 p-0.5 shadow-2xl shadow-amber-500/20">
             <div class="flex size-full items-center justify-center rounded-[14px] bg-slate-950">
               <UIcon name="i-lucide-shield-alert" class="size-8 text-amber-400 animate-pulse" />
             </div>
