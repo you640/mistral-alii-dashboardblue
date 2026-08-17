@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Výber PWA Ikony — Alibi Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #030712;
+      --card-bg: rgba(17, 24, 39, 0.7);
+      --border: rgba(255, 255, 255, 0.1);
+      --text: #f9fafb;
+      --text-muted: #9ca3af;
+      --primary: #38bdf8;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.12) 0px, transparent 50%);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 9999px;
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 25px rgba(56, 189, 248, 0.2);
+    }
+    .img-wrapper {
+      width: 220px;
+      height: 220px;
+      border-radius: 24px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: #000;
+    }
+    .img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .card:hover .img-wrapper img {
+      transform: scale(1.05);
+    }
+    .concept-number {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .concept-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .concept-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .footer-bar {
+      margin-top: 60px;
+      text-align: center;
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">Návrh PWA Ikôn</div>
+      <h1>Alibi — AI Forenzná Platforma</h1>
+      <p class="subtitle">Kliknite alebo si vyberte ikonu, ktorú chcete nastaviť ako oficiálnu pre celú aplikáciu.</p>
+    </header>
+
+    <div class="grid">
+      <!-- Koncept 1 -->
+      <div class="card">
+        <div class="img-wrapper">
+          <img src="/pwa-icons/concept-1-shield.jpg" alt="Koncept 1">
+        </div>
+        <div class="concept-number">Koncept #1</div>
+        <div class="concept-title">Kybernetický Štít & Odtlačok</div>
+        <div class="concept-desc">Holografický neónový štít s biometrickým odtlačkom a neurónovými spojmi pre dôkaznú integritu.</div>
+      </div>
+
+      <!-- Koncept 2 -->
+      <div class="card">
+        <div class="img-wrapper">
+          <img src="/pwa-icons/concept-2-neural.jpg" alt="Koncept 2">
+        </div>
+        <div class="concept-number">Koncept #2</div>
+        <div class="concept-title">Neurónový Pavúk Vzťahov</div>
+        <div class="concept-desc">3D kryštalické písmeno A prepojené so sociálnym grafom a dátovými väzbami medzi podozrivými.</div>
+      </div>
+
+      <!-- Koncept 3 -->
+      <div class="card">
+        <div class="img-wrapper">
+          <img src="/pwa-icons/concept-3-lens.jpg" alt="Koncept 3">
+        </div>
+        <div class="concept-number">Koncept #3</div>
+        <div class="concept-title">AI Sherlock Objektív</div>
+        <div class="concept-desc">Pokročilý mechanicko-kybernetický objektív zameraný na mikroskopické detaily a časové osi.</div>
+      </div>
+
+      <!-- Koncept 4 -->
+      <div class="card">
+        <div class="img-wrapper">
+          <img src="/pwa-icons/concept-4-scale.jpg" alt="Koncept 4">
+        </div>
+        <div class="concept-number">Koncept #4</div>
+        <div class="concept-title">Váha Spravodlivosti</div>
+        <div class="concept-desc">Klasický symbol spravodlivosti vytvorený z elektrotechnických spojov a dátových procesorov.</div>
+      </div>
+
+      <!-- Koncept 5 -->
+      <div class="card">
+        <div class="img-wrapper">
+          <img src="/pwa-icons/concept-5-monogram.jpg" alt="Koncept 5">
+        </div>
+        <div class="concept-number">Koncept #5</div>
+        <div class="concept-title">Titánový Monogram s Laserom</div>
+        <div class="concept-desc">Karbónový podklad, titánové A a laserový lúč s kryštálom detekcie rozporov. Minimalistický a ostrý.</div>
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <p style="color: var(--text-muted); font-size: 14px;">
+        💡 Pre výber ikony stačí napísať jej číslo do chatu (napr. <b>"Chcem koncept 1"</b>) a automaticky ju nastavím pre celú aplikáciu.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
