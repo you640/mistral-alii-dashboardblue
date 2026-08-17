@@ -32,6 +32,9 @@ useSeoMeta({
   <UApp>
     <NuxtLoadingIndicator />
 
+    <!-- Globálny Bezpečnostný Zámok Trezoru (PIN 2366) -->
+    <VaultSecurityGate />
+
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
