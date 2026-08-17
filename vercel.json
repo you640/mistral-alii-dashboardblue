@@ -1,12 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nuxtjs",
-  "functions": {
-    "server/api/**": {
-      "maxDuration": 60,
-      "memory": 1024
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
