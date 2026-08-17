@@ -1,0 +1,146 @@
+{
+  "name": "Document",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "N\u00e1zov / n\u00e1zov s\u00faboru v\u00fdpovede"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "URL nahran\u00e9ho (predspracovan\u00e9ho) obr\u00e1zku v\u00fdpovede"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "analyzing",
+        "done",
+        "error"
+      ],
+      "default": "pending"
+    },
+    "error": {
+      "type": "string",
+      "description": "Chybov\u00e1 spr\u00e1va pri zlyhan\u00ed anal\u00fdzy"
+    },
+    "summary": {
+      "type": "string",
+      "description": "Kr\u00e1tke zhrnutie anal\u00fdzy"
+    },
+    "person_count": {
+      "type": "number",
+      "default": 0
+    },
+    "relationship_count": {
+      "type": "number",
+      "default": 0
+    },
+    "red_flag_count": {
+      "type": "number",
+      "default": 0
+    },
+    "processing_started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO datetime \u0161tartu spracovania"
+    },
+    "processing_finished_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO datetime ukon\u010denia spracovania"
+    },
+    "attempt_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Kumulat\u00edvny po\u010det AI pokusov naprie\u010d invok\u00e1ciami"
+    },
+    "last_error": {
+      "type": "string",
+      "description": "Kr\u00e1tky klasifikovan\u00fd k\u00f3d chyby (timeout / http_429 / ...)"
+    },
+    "next_retry_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "processing_job_id": {
+      "type": "string",
+      "description": "ID behu spracovania"
+    },
+    "parent_document_id": {
+      "type": "string",
+      "description": "ID rodi\u010dovsk\u00e9ho PDF kontajnera (iba pdf_page)"
+    },
+    "page_number": {
+      "type": "number",
+      "description": "1-based \u010d\u00edslo str\u00e1nky (iba pdf_page)"
+    },
+    "page_count": {
+      "type": "number",
+      "description": "Po\u010det str\u00e1nok na kontajneri alebo celkov\u00fd po\u010det pri page doc"
+    },
+    "source_kind": {
+      "type": "string",
+      "enum": [
+        "upload",
+        "pdf_container",
+        "pdf_page"
+      ],
+      "default": "upload",
+      "description": "upload = be\u017en\u00fd s\u00fabor; pdf_container = origin\u00e1lne PDF; pdf_page = JPEG str\u00e1nka"
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

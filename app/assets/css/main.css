@@ -15,4 +15,24 @@
   --color-green-800: #016538;
   --color-green-900: #0A5331;
   --color-green-950: #052E16;
+
+  /* Forenzné farby — osoby */
+  --color-suspect: #ef4444;
+  --color-witness: #3b82f6;
+  --color-victim: #f97316;
+  --color-alibi: #22c55e;
+
+  /* Forenzné farby — závažnosť */
+  --color-severity-high: #dc2626;
+  --color-severity-medium: #f59e0b;
+  --color-severity-low: #6b7280;
+
+  /* Forenzné farby — vzťahy */
+  --color-rel-spolupachatel: #dc2626;
+  --color-rel-nepriatelstvo: #f97316;
+  --color-rel-financie: #eab308;
+  --color-rel-rodina: #8b5cf6;
+  --color-rel-alibi: #10b981;
+  --color-rel-kontakt: #3b82f6;
 }
+

@@ -1,24 +1,27 @@
 <script setup lang="ts">
-import type { NuxtError } from '#app'
-
 defineProps<{
-  error: NuxtError
-}>()
-
-useSeoMeta({
-  title: 'Page not found',
-  description: 'We are sorry but this page could not be found.'
-})
-
-useHead({
-  htmlAttrs: {
-    lang: 'en'
+  error: {
+    statusCode: number
+    message: string
   }
-})
+}>()
 </script>
 
 <template>
-  <UApp>
-    <UError :error="error" />
-  </UApp>
+  <div class="flex flex-col items-center justify-center min-h-screen px-4 text-center">
+    <div class="flex size-16 items-center justify-center rounded-full bg-red-500/10 mb-4">
+      <UIcon name="i-lucide-alert-circle" class="size-8 text-red-500" />
+    </div>
+    <h1 class="text-2xl font-bold mb-2">
+      {{ error.statusCode }}
+    </h1>
+    <p class="text-muted mb-6">
+      {{ error.message || 'Nastala neočakávaná chyba.' }}
+    </p>
+    <UButton
+      label="Späť na prehľad"
+      to="/"
+      variant="outline"
+    />
+  </div>
 </template>
