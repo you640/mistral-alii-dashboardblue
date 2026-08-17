@@ -309,4 +309,4 @@ Scheduled workflow bežiaci každých 5 minút, ktorý volá `recoverStuckDocume
 - **Entity schémy** sa zapisujú vždy ako kompletný JSON objekt (`write_file`), nikdy `find_replace`.
 - **Nové komponenty** → vlastný súbor (`≤ 50 riadkov`), žiadne pridávanie do existujúcich.
 - **Tailwind triedy** ako literály — dynamické mená sa purgovaným buildom odstránia.
-- **Importy** cez `@/` alias (nikdy relatívne `src/` cesty).
+- **Importy** cez `@/` alias (nikdy relatívne `src/` cesty).# mistral-alii-dashboardblue
