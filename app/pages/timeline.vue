@@ -30,7 +30,7 @@ const events = computed(() => store.timelineEvents)
           <p class="text-sm text-muted max-w-sm mx-auto mb-4">
             AI automaticky extrahuje časové údaje a udalosti z nahraných výpovedí.
           </p>
-          <UButton label="Načítať ukážkový prípad" to="/documents" icon="i-lucide-folder-plus" size="sm" />
+          <UButton label="Nahrať spis" to="/documents" icon="i-lucide-upload" size="sm" />
         </div>
 
         <!-- Časová os -->

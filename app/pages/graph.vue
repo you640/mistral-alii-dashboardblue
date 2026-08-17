@@ -59,7 +59,7 @@ function getNodePos(id: string) {
           <p class="text-sm text-muted max-w-sm mx-auto mb-4">
             Načítajte spisy s výpoveďami a osobami pre vygenerovanie interaktívneho sociálneho grafu.
           </p>
-          <UButton label="Načítať ukážkový prípad" to="/documents" icon="i-lucide-folder-plus" size="sm" />
+          <UButton label="Nahrať spis" to="/documents" icon="i-lucide-upload" size="sm" />
         </div>
 
         <div v-else class="grid grid-cols-1 lg:grid-cols-3 gap-4">

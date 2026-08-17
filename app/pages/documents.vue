@@ -2,7 +2,6 @@
 import { useForenzStore } from '~/stores/forenzStore'
 import { useAiAnalyzer } from '~/composables/useAiAnalyzer'
 import { useBatchUploader } from '~/composables/useBatchUploader'
-import { SAMPLE_CASE } from '~/utils/sampleData'
 
 const store = useForenzStore()
 const toast = useToast()
@@ -94,12 +93,6 @@ function formatBytes(bytes: number): string {
   const sizes = ['B', 'KB', 'MB', 'GB']
   const i = Math.floor(Math.log(bytes) / Math.log(k))
   return `${parseFloat((bytes / Math.pow(k, i)).toFixed(1))} ${sizes[i]}`
-}
-
-function handleLoadDemo() {
-  store.importState(SAMPLE_CASE)
-  store.saveToLocalStorage()
-  toast.add({ title: 'Ukážková kauza načítaná', color: 'success' })
 }
 
 function removeDoc(id: string) {
@@ -372,13 +365,6 @@ function removeDoc(id: string) {
             <h3 class="text-sm font-semibold uppercase tracking-wider text-muted">
               Evidované spisy v databáze ({{ filteredDocuments.length }})
             </h3>
-            <UButton
-              label="Načítať ukážku (Demo)"
-              variant="ghost"
-              color="neutral"
-              size="xs"
-              @click="handleLoadDemo"
-            />
           </div>
 
           <div v-if="filteredDocuments.length === 0" class="text-center py-12 border border-dashed border-default rounded-xl">

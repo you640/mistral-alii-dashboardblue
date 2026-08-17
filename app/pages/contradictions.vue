@@ -94,7 +94,7 @@ function getSeverityColor(sev: Severity | string) {
           <p class="text-sm text-muted max-w-sm mx-auto mb-4">
             V aktuálnom výbere sa nenachádzajú žiadne nezrovnalosti medzi výpoveďami.
           </p>
-          <UButton label="Načítať ukážkový prípad" to="/documents" icon="i-lucide-folder-plus" size="sm" />
+          <UButton label="Nahrať spis" to="/documents" icon="i-lucide-upload" size="sm" />
         </div>
 
         <!-- Karty rozporov -->

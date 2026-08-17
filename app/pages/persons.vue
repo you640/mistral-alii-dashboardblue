@@ -81,7 +81,7 @@ function removePerson(id: string) {
           <UIcon name="i-lucide-user-x" class="size-10 text-muted mx-auto mb-2 opacity-50" />
           <h3 class="font-semibold text-base mb-1">Žiadne osoby</h3>
           <p class="text-sm text-muted max-w-sm mx-auto mb-4">
-            Nahrajte výpovede v sekcii Spisy alebo načítajte ukážkový prípad pre extrakciu profilov.
+            Nahrajte výpovede v sekcii Spisy pre automatickú AI extrakciu profilov osôb.
           </p>
           <UButton label="Prejsť na Spisy" to="/documents" icon="i-lucide-file-text" size="sm" />
         </div>

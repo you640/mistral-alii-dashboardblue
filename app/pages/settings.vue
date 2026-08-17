@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useForenzStore } from '~/stores/forenzStore'
-import { SAMPLE_CASE } from '~/utils/sampleData'
 
 const store = useForenzStore()
 const toast = useToast()
@@ -18,20 +17,22 @@ onMounted(() => {
   }
 })
 
-function handleSaveSettings() {
+function handleSaveBase44() {
   if (typeof window !== 'undefined') {
     localStorage.setItem('base44_app_id', appId.value)
-    if (apiKey.value) localStorage.setItem('base44_api_key', apiKey.value)
-    if (mistralApiKey.value) localStorage.setItem('mistral_api_key', mistralApiKey.value)
+    localStorage.setItem('base44_api_key', apiKey.value)
+    toast.add({ title: 'Base44 konfigurácia uložená', color: 'success' })
   }
-  toast.add({
-    title: 'Nastavenia uložené',
-    description: 'Konfigurácia Base44 SDK a Mistral AI bola aktualizovaná.',
-    color: 'success'
-  })
 }
 
-async function handleExportDossier() {
+function handleSaveMistral() {
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('mistral_api_key', mistralApiKey.value)
+    toast.add({ title: 'Mistral API kľúč uložený', color: 'success' })
+  }
+}
+
+function handleExportDossier() {
   isExporting.value = true
   try {
     const data = store.exportState()
@@ -40,20 +41,15 @@ async function handleExportDossier() {
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = `alibi_forenz_spis_${Date.now()}.json`
+    a.download = `forenzny_spis_audit_${Date.now()}.json`
+    document.body.appendChild(a)
     a.click()
+    document.body.removeChild(a)
     URL.revokeObjectURL(url)
-
-    toast.add({
-      title: 'Forenzný spis exportovaný',
-      description: 'Záloha celého spisu bola stiahnutá v JSON formáte.',
-      color: 'success'
-    })
-  }
-  catch (err: any) {
-    toast.add({ title: 'Chyba exportu', description: err.message, color: 'error' })
-  }
-  finally {
+    toast.add({ title: 'Súdny spis úspešne exportovaný', color: 'success' })
+  } catch (err: any) {
+    toast.add({ title: 'Chyba pri exporte', description: err.message, color: 'error' })
+  } finally {
     isExporting.value = false
   }
 }
@@ -64,12 +60,6 @@ function handleResetAll() {
     store.saveToLocalStorage()
     toast.add({ title: 'Všetky dáta boli vymazané', color: 'neutral' })
   }
-}
-
-function handleLoadDemo() {
-  store.importState(SAMPLE_CASE)
-  store.saveToLocalStorage()
-  toast.add({ title: 'Ukážková kauza načítaná', color: 'success' })
 }
 </script>
 
@@ -162,13 +152,6 @@ function handleLoadDemo() {
               color="primary"
               :loading="isExporting"
               @click="handleExportDossier"
-            />
-            <UButton
-              icon="i-lucide-folder-plus"
-              label="Načítať Ukážkovú Kauzu (Demo)"
-              variant="outline"
-              color="neutral"
-              @click="handleLoadDemo"
             />
           </div>
         </div>
