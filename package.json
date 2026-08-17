@@ -47,6 +47,7 @@
     "eslint": "^10.8.1",
     "graphology": "^0.26.0",
     "graphology-metrics": "^2.4.0",
+    "pdfjs-dist": "^6.2.108",
     "pinia": "^2.2.6",
     "typescript": "^6.0.3",
     "vue-tsc": "^3.3.9"
